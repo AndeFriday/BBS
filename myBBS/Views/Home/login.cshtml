@@ -1,0 +1,106 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Desktop-BBS论坛管理系统</title>
+    <meta name="keywords" content="desktop-Webos,Webos,windows-webos">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="~/Content/themes/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/themes/desktop/style/swiper-3.4.0.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/themes/desktop/style/desktop.css?t">
+    <meta name="baidu-site-verification" content="btBYeQVH5L" />
+    <style>
+        .forgetpwd {
+            cursor: pointer;
+            position:relative;
+            top:5px;
+            color:#fff;
+        }
+
+       .forgetpwd:hover {
+                color: red !important;
+            }
+    </style>
+</head>
+<body class="desktop-bg">
+    <div class="desktop-locking" style="display:block;z-index:10">
+        <div class="locking-layout">
+            <div class="locking-unlock">
+                <div class="user-unlock" style="margin-top:40%">
+                    <form class="layui-form" action="">
+                        <div class="layui-form-item">
+                            <input type="text" lay-verify="adminname" name="adminname" autocomplete="off" placeholder="用户名" class="layui-input unlock-pwd" value="zsk">
+                        </div>
+                        <div class="layui-form-item">
+                            <input type="password" placeholder="密码" lay-verify="adminpwd" name="adminpwd" class="layui-input unlock-pwd" value="zsk123456" autocomplete="off">
+                            <i class="iconfont unlock-see-pwd" style="top:61px">&#xe612;</i>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block" style="text-align:center;margin-left:0">
+                                <button class="layui-btn" lay-submit="" lay-filter="login" style="width:300px">登录</button>
+                                <a class="forgetpwd">忘记密码</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Content/themes/layui/layui.js"></script>
+    <script>
+       
+        layui.use(['form', 'layedit', 'laydate'], function () {
+            var form = layui.form()
+            , layer = layui.layer,
+                $=layui.jquery;
+            //显示密码
+            $('body').on('click', '.unlock-see-pwd', function () {
+                var ele = $(this).siblings('input[type="password"]');
+                var state = ele.length;
+                if (state) {
+                    $(ele).attr('type', 'text');
+                } else {
+                    $($(this).siblings('input[type="text"]')).attr('type','password');
+                }
+            });
+            form.verify({
+                adminname: function (value) {
+                    if (value.length < 1) {
+                        return '请输入用户名';
+                    }
+                },
+               adminpwd: [/(.+){6,12}$/, '密码必须6到12位']
+            });
+            form.on('submit(login)', function (data) {
+                var index = layer.load(0, { shade: false });
+                console.log(data.field);
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/adminLogin",
+                    data: data.field,
+                    async: false,
+                    dataType: "json",
+                    success: function (json) {
+                        layer.close(index);
+                        if (json.isHas) {
+                            window.location = "index";
+                        } else {
+                            layer.msg(json.message);
+                        }
+                    },
+                    error: function () {
+                        layer.close(index);
+                        layer.msg("不好意思出问题了");
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+﻿@{ 
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Desktop-BBS论坛管理系统</title>
+    <meta name="keywords" content="desktop-Webos,Webos,windows-webos">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="~/Content/themes/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/themes/desktop/style/swiper-3.4.0.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/themes\desktop\style\userPages.css">
+    <script src="~/Content/themes/desktop/js/jquery-1.11.3.js"></script>
+    <script src="~/Content/themes/desktop/js/loadWeather.js"></script>
+</head>
+<body>
+    <div class="conatiner">
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll" >
+                <ul class="layui-nav layui-nav-tree" lay-filter="listUser">
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a href="javascript:;">成员展示</a>
+                        <dl class="layui-nav-child ">
+                            <dd data-list="#userBox1" data-role="admin" class="layui-this"><a href="javascript:;">管理员</a></dd>
+                            <dd data-list="#userBox2" data-role="userOnly"><a href="javascript:;">用户列表</a></dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="containerRight">
+            <div class="containerShowBox" id="userBox1">
+                <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                    <ul class="layui-tab-title">
+                        <li class="layui-this" style="width: 98%;">论坛管理员</li>
+                    </ul>
+                    <div class="layui-tab-content">
+                        <div class="layui-tab-item layui-show">
+                            <fieldset class="layui-elem-field">
+                                <legend>操作</legend>
+                                <div class="layui-field-box">
+                                    <button class="layui-btn layui-btn-primary" data-operate="adminAdd"><i class="layui-icon">&#xe608;</i>新增</button>
+                                </div>
+                            </fieldset>
+                            <fieldset class="layui-elem-field">
+                            <legend>筛选</legend>
+                                <div class="layui-field-box">
+                                <form class="layui-form  layui-form-mid" action="" id="expendSearch">
+                                    
+                                </form>
+                            </div>
+                            </fieldset>
+                            <table class="layui-table"  style="margin-top: 20px">
+                                <colgroup>
+                                    <col width="80">
+                                    <col width="90">
+                                    <col width="110">
+                                    <col width="110">
+                                    <col>
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>用户名</th>
+                                    <th>手机号码</th>
+                                    <th>所在版区</th>
+                                    <th>角色</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody id="adminShow">
+                                </tbody>
+                            </table>
+                            <div id="pages1" ></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="containerShowBox hidden" id="userBox2">
+                <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                    <ul class="layui-tab-title">
+                        <li class="layui-this" style="width: 98%;">论坛成员</li>
+                    </ul>
+                    <div class="layui-tab-content">
+                        <div class="layui-tab-item layui-show">
+                            <fieldset class="layui-elem-field">
+                                <legend>操作</legend>
+                                <div class="layui-field-box">
+                                    <button class="layui-btn layui-btn-primary" data-operate="userAdd"><i class="layui-icon">&#xe608;</i>新增</button>
+                                </div>
+                            </fieldset>
+                            <fieldset class="layui-elem-field">
+                                <legend>筛选</legend>
+                                <div class="layui-field-box">
+                                    <form class="layui-form  layui-form-mid" action="">
+                                        <div class="layui-form-item layui-form-item-nobottommargin">
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">角色：</label>
+                                                <div class="layui-input-inline  layui-input-short" id="userRoleOption">
+                                                    <select name="userstatus">
+                                                        <option value="1">书香校园</option>
+                                                        <option value="2">个性风采</option>
+                                                        <option value="3">我有话说</option>
+                                                        <option value="4">学姐学长</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                             
+                                        <div class="layui-form-item layui-form-item-nobottommargin">
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">名字/手机:</label>
+                                                <div class="layui-input-inline layui-input-short">
+                                                    <input type="text" name="userNameOrPhone"  autocomplete="off" placeholder="请输入" class="layui-input">
+                                                </div>
+                                                <button class="layui-btn " lay-submit="usersearch" lay-filter="usersearch">确认</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </fieldset>
+                            <table class="layui-table"  style="margin-top: 20px">
+                                <colgroup>
+                                    <col width="80">
+                                    <col width="90">
+                                    <col width="110">
+                                    <col>
+                              
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>用户名</th>
+                                    <th>联系方式</th>
+                                    <th>角色</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody id="userShow">                        
+                                </tbody>
+                            </table>
+                            <div id="pages2" ></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="userDetails hidden">
+                <form class="layui-form showUserDetails" action="">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">用户名:</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="title"  autocomplete="off" value="admin" class="layui-input layui-disabled-normal" disabled>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">手机号码:</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone"  autocomplete="off" value="15669060698" class="layui-input layui-disabled-normal" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">工作邮箱:</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="email"  autocomplete="off" value="145907177@qq.com" class="layui-input layui-disabled-normal" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">所在处:</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone"  autocomplete="off" value="黄山学院26栋" class="layui-input layui-disabled-normal" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">版区:</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone"  autocomplete="off" value="黄山学院26栋" class="layui-input layui-disabled-normal" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">登入时间:</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone"  autocomplete="off" value="黄山学院26栋" class="layui-input layui-disabled-normal" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Content/themes/layui/layui.js"></script>
+    <script src="~/Content/themes/desktop/js/userPages.js"></script>
+
+</body>
+</html>

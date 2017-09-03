@@ -1,0 +1,43 @@
+﻿@using myBBS.Models;
+@using System;
+@using System.Collections;
+@using System.Collections.Generic;
+@using System.Data.Entity;
+@using System.Data.SqlClient;
+@using System.IO;
+@using System.Linq;
+@using System.Runtime.Serialization.Json;
+@using System.Text;
+@using System.Web;
+@using System.Web.Mvc;
+@{ 
+    string role = "admin";// Request.Params["role"].ToString().Trim();
+    string sql = "select * from " + role + "";
+    object objResult = "";
+    SqlDataReader reader = sqlHelper.ExecuteReader(sql);
+    List<Admin> admin = new List<Admin>();
+    if (reader.HasRows)
+    {
+        while (reader.Read())
+        {
+            admin.Add(new Admin
+            {
+                adminId = Convert.ToInt32(reader["adminid"]),
+                name = reader["adminname"].ToString(),
+                pwd = reader["adminpwd"].ToString(),
+                phone = Convert.ToDecimal(reader["adminphone"]),
+                adress = reader["adminadress"].ToString(),
+                expend = Convert.ToInt32(reader["adminexpend"]),
+                email = reader["adminemail"].ToString(),
+                status = Convert.ToInt32(reader["status"])
+            });
+        }
+    }
+    System.Runtime.Serialization.Json.DataContractJsonSerializer serializer = new System.Runtime.Serialization.Json.DataContractJsonSerializer(admin.GetType());
+    using (MemoryStream ms = new MemoryStream())
+    {
+        serializer.WriteObject(ms, admin);
+        string list = Encoding.UTF8.GetString(ms.ToArray());
+    }
+    Json.Write(admin,Output);
+}

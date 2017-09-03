@@ -1,0 +1,128 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Desktop-BBS论坛管理系统</title>
+    <meta name="keywords" content="desktop-Webos,Webos,windows-webos">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="~/Content/themes/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/themes/desktop/style/swiper-3.4.0.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/themes/desktop/style/userPages.css">
+    <script src="~/Content/themes/desktop/js/jquery-1.11.3.js"></script>
+    <script src="~/Content/themes/desktop/js/loadWeather.js"></script>
+    <style>
+        .layui-btn-group {
+                border: 1px solid #dedede;
+                padding: 10px;
+                display: inline-block;
+                margin-bottom: 10px;
+                margin-right: 10px;
+        }
+            .layui-btn-group > span {
+                    color: #59cbcc;
+            }  
+    </style>
+</head>
+<body>
+    <div class="conatiner">
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll" >
+                <ul class="layui-nav layui-nav-tree" lay-filter="listUser">
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a href="javascript:;">系统设置</a>
+                        <dl class="layui-nav-child ">
+                            <dd data-list="#userBox1" class="layui-this"><a href="javascript:;">敏感词设置</a></dd>
+                            <dd data-list="#userBox2"><a href="javascript:;">访问管理</a></dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="containerRight">
+            <div class="containerShowBox " id="userBox1">
+                <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                    <ul class="layui-tab-title">
+                        <li class="layui-this" style="width: 97%;">敏感词设置</li>
+                    </ul>
+                    <div class="layui-tab-content">
+                        <div class="layui-tab-item layui-show">
+                            <fieldset class="layui-elem-field">
+                                <legend>操作</legend>
+                                <div class="layui-field-box">
+                                    <button class="layui-btn layui-btn-primary" data-operate="addSensitive"><i class="layui-icon">&#xe608;</i>新增</button>
+                                </div>
+                            </fieldset>
+                            <fieldset class="layui-elem-field">
+                                <legend>敏感词</legend>
+                                <div class="layui-field-box" id="sensitive">
+                                   
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="containerShowBox hidden" id="userBox2">
+                <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                    <ul class="layui-tab-title">
+                        <li class="layui-this" style="width: 97%;">访问管理</li>
+                    </ul>
+                    <div class="layui-tab-content">
+                        <div class="layui-tab-item layui-show">
+                            <fieldset class="layui-elem-field">
+                                <legend>筛选</legend>
+                                <div class="layui-field-box">
+                                    <form class="layui-form  layui-form-mid " action="">
+                                        <div class="layui-form-item layui-form-item-inline">
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">Ip地址</label>
+                                                <div class="layui-input-inline">
+                                                    <input type="text" name="comeIp" class="layui-input">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item layui-form-item-inline">
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">日期</label>
+                                                <div class="layui-input-inline">
+                                                    <input type="text" name="comeTime" placeholder="yyyy-mm-dd" autocomplete="off" class="layui-input" onclick="layui.laydate({elem: this})">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="layui-btn " lay-submit="search" lay-filter="search">确认</button>
+                                    </form>
+                                </div>
+                            </fieldset>
+                            <table class="layui-table"  style="margin-top: 20px">
+                                <colgroup>
+                                    <col width="150">
+                                    <col width="150">
+                                    <col>
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>访问ip</th>
+                                    <th>访问论坛</th>
+                                    <th>访问时间</th>
+                                    <th>状态</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody id="comeShow"></tbody>
+                            </table>
+                            <div id="pages2" ></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Content/themes/layui/layui.js"></script>
+    <script src="~/Content/themes/desktop/js/systemControl.js"></script>
+</body>
+</html>

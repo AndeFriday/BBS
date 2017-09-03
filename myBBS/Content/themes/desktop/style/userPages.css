@@ -1,0 +1,117 @@
+.hidden{
+    display: none;
+}
+html{
+    background: #fff;
+}
+.containerRight{
+    position: absolute;
+    left: 200px;
+    right: 0;
+    top:0;
+}
+
+#demo {     margin: 0 auto;  background: #dedede;  color: #FFF;  text-align: center;  padding: 15px 0; }
+#demo i { background: no-repeat top left; display:inline-block; height:128px; line-height:128px; margin:0 auto 20px auto; font-size:70px; padding-left:150px; font-style:normal; text-align:center; font-weight:bold; }
+#demo i.icon-xiaoyu { background-image:url(../images/xiaoyu.png); }
+#demo i.icon-zhongyu { background-image:url(../images/zhongyu.png); }
+#demo i.icon-dayu { background-image:url(../images/dayu.png); }
+#demo i.icon-qing { background-image:url(../images/qing.png); }
+#demo i.icon-duoyun { background-image:url(../images/duoyun.png); }
+#demo i.icon-yin { background-image:url(../images/ying.png); }
+#demo p { background:rgba(0,0,0,.3); margin:0 200px; padding:20px; border-radius:1000px; font-size:16px; }
+#demo p span { margin:0 15px; }
+#demo2 { width:980px; margin:0 auto; margin-top:20px; background:#fafafa; border:1px solid #ddd; padding:30px 0; overflow:hidden; }
+
+.weatherTop{
+
+}
+.message{
+}
+.messageBox{
+    width: 44%;
+    float: left;
+    padding: 3%;
+}
+.messageBox>ul{
+    overflow: hidden;
+}
+.messageBox>h1{
+    font-size: 18px;
+    color: rgba(18, 0, 255, 0.61);
+    border-bottom: 1px solid;
+    padding-bottom: 5px;
+}
+.messageBox>ul>li{
+    float: left;
+    width: 100%;
+    padding: 7px 0;
+    text-indent: 10px;
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+    cursor: pointer;
+}
+.messageBox>ul>li:hover{
+    background: #dedede;
+}
+.messageBox>ul>li>i{
+    width: 20px;
+    text-indent: 0;
+    height: 20px;
+    display: inline-block;
+    background: #c1c1c1;
+    text-align: center;
+    line-height: 20px;
+    margin-right: 10px;
+    color: #fff;
+}
+.messageBox>ul>li:nth-child(1)>i{
+    background: red !important;
+    color: #fff;
+}
+.messageBox>ul>li:nth-child(2)>i{
+    background: orangered !important;
+    color: #fff;
+}
+.messageBox>ul>li:nth-child(3)>i{
+    background: orange !important;
+    color: #fff;
+}
+.messageBox>ul>li:nth-child(1)>i{
+    background: red !important;
+    color: #fff;
+}
+.messageBox>ul>li:nth-child(1)>i{
+    background: red !important;
+    color: #fff;
+}
+.layui-fifth{
+    width:50% !important;
+    padding:0 !important;
+}
+.showBox{
+    width: 400px;
+    margin: 30px auto;
+}
+.layui-input-center{
+    text-align: center;
+    margin:0;
+}
+.layui-form-item-nobottommargin{
+    float: left !important;
+    margin-bottom: 0 !important;
+    clear: none !important;
+}
+.layui-form-item-inline{
+    float: left !important;
+    clear: none !important;
+}
+.layui-page-center{
+    text-align: center;
+}
+.showUserDetails{
+    width:340px !important;
+    margin:30px auto !important;
+}
+.containerShowBox {
+    overflow-x:hidden ;
+}

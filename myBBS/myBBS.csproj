@@ -1,0 +1,783 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E6C921E6-0FD5-416C-86DF-A7D611ABEA4E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>myBBS</RootNamespace>
+    <AssemblyName>myBBS</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Content\utf8-net\net\App_Code\Config.cs" />
+    <Compile Include="Content\utf8-net\net\App_Code\ConfigHandler.cs" />
+    <Compile Include="Content\utf8-net\net\App_Code\CrawlerHandler.cs" />
+    <Compile Include="Content\utf8-net\net\App_Code\Handler.cs" />
+    <Compile Include="Content\utf8-net\net\App_Code\ListFileHandler.cs" />
+    <Compile Include="Content\utf8-net\net\App_Code\NotSupportedHandler.cs" />
+    <Compile Include="Content\utf8-net\net\App_Code\PathFormater.cs" />
+    <Compile Include="Content\utf8-net\net\App_Code\UploadHandler.cs" />
+    <Compile Include="Controllers\AdminUserController.cs" />
+    <Compile Include="Controllers\expendController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\invitationController.cs" />
+    <Compile Include="Controllers\systemController.cs" />
+    <Compile Include="Controllers\userAndAdminController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\accountExpend.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\adminType.cs" />
+    <Compile Include="Models\comeuser.cs" />
+    <Compile Include="Models\expend.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\mySession.cs" />
+    <Compile Include="Models\Sensitive.cs" />
+    <Compile Include="Models\sqlHelper.cs" />
+    <Compile Include="Models\title.cs" />
+    <Compile Include="Models\titleState.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\userType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\themes\desktop\images\bg1_small.jpg" />
+    <Content Include="Content\themes\desktop\images\bg2.jpg" />
+    <Content Include="Content\themes\desktop\images\bg2_small.jpg" />
+    <Content Include="Content\themes\desktop\images\bg3.jpg" />
+    <Content Include="Content\themes\desktop\images\bg3_small.jpg" />
+    <Content Include="Content\themes\desktop\images\bg4.jpg" />
+    <Content Include="Content\themes\desktop\images\bg4_small.jpg" />
+    <Content Include="Content\themes\desktop\images\bg5.jpg" />
+    <Content Include="Content\themes\desktop\images\bg5_small.jpg" />
+    <Content Include="Content\themes\desktop\images\dayu.png" />
+    <Content Include="Content\themes\desktop\images\desktop_windows7.jpg" />
+    <Content Include="Content\themes\desktop\images\desktop_yangguang.jpg" />
+    <Content Include="Content\themes\desktop\images\duoyun.png" />
+    <Content Include="Content\themes\desktop\images\folder.png" />
+    <Content Include="Content\themes\desktop\images\loading1.gif" />
+    <Content Include="Content\themes\desktop\images\loading2.gif" />
+    <Content Include="Content\themes\desktop\images\loading3.gif" />
+    <Content Include="Content\themes\desktop\images\loading4.gif" />
+    <Content Include="Content\themes\desktop\images\loading5.gif" />
+    <Content Include="Content\themes\desktop\images\loading6.gif" />
+    <Content Include="Content\themes\desktop\images\login-bg-1.jpg" />
+    <Content Include="Content\themes\desktop\images\qing.png" />
+    <Content Include="Content\themes\desktop\images\rgba00006.png" />
+    <Content Include="Content\themes\desktop\images\rgbafff28.png" />
+    <Content Include="Content\themes\desktop\images\user-avatar.jpeg" />
+    <Content Include="Content\themes\desktop\images\xiaoyu.png" />
+    <Content Include="Content\themes\desktop\images\ying.png" />
+    <Content Include="Content\themes\desktop\images\zhongyu.png" />
+    <Content Include="Content\themes\desktop\images\_notes\dwsync.xml" />
+    <Content Include="Content\themes\desktop\js\common.js" />
+    <Content Include="Content\themes\desktop\js\desktop.js" />
+    <Content Include="Content\themes\desktop\js\echarts.min.js" />
+    <Content Include="Content\themes\desktop\js\expand.js" />
+    <Content Include="Content\themes\desktop\js\invitation.js" />
+    <Content Include="Content\themes\desktop\js\jquery-1.11.3.js" />
+    <Content Include="Content\themes\desktop\js\jquery-ui.min.css" />
+    <Content Include="Content\themes\desktop\js\jquery-ui.min.js" />
+    <Content Include="Content\themes\desktop\js\jquery.min.js" />
+    <Content Include="Content\themes\desktop\js\loadWeather.js" />
+    <Content Include="Content\themes\desktop\js\swiper.js" />
+    <Content Include="Content\themes\desktop\js\systemControl.js" />
+    <Content Include="Content\themes\desktop\js\userCenter.js" />
+    <Content Include="Content\themes\desktop\js\userPages.js" />
+    <Content Include="Content\themes\desktop\js\_notes\dwsync.xml" />
+    <Content Include="Content\themes\desktop\style\desktop.css" />
+    <Content Include="Content\themes\desktop\style\fonts\iconfont.js" />
+    <Content Include="Content\themes\desktop\style\fonts\iconfont.svg" />
+    <Content Include="Content\themes\desktop\style\fonts\_notes\dwsync.xml" />
+    <Content Include="Content\themes\desktop\style\login.css" />
+    <Content Include="Content\themes\desktop\style\swiper-3.4.0.min.css" />
+    <Content Include="Content\themes\desktop\style\userCenter.css" />
+    <Content Include="Content\themes\desktop\style\userPages.css" />
+    <Content Include="Content\themes\desktop\style\_notes\dwsync.xml" />
+    <Content Include="Content\themes\layui\css\layui.css" />
+    <Content Include="Content\themes\layui\css\layui.mobile.css" />
+    <Content Include="Content\themes\layui\css\modules\code.css" />
+    <Content Include="Content\themes\layui\css\modules\laydate\icon.png" />
+    <Content Include="Content\themes\layui\css\modules\laydate\laydate.css" />
+    <Content Include="Content\themes\layui\css\modules\laydate\_notes\dwsync.xml" />
+    <Content Include="Content\themes\layui\css\modules\layer\default\icon-ext.png" />
+    <Content Include="Content\themes\layui\css\modules\layer\default\icon.png" />
+    <Content Include="Content\themes\layui\css\modules\layer\default\layer.css" />
+    <Content Include="Content\themes\layui\css\modules\layer\default\loading-0.gif" />
+    <Content Include="Content\themes\layui\css\modules\layer\default\loading-1.gif" />
+    <Content Include="Content\themes\layui\css\modules\layer\default\loading-2.gif" />
+    <Content Include="Content\themes\layui\css\modules\layer\default\_notes\dwsync.xml" />
+    <Content Include="Content\themes\layui\css\modules\_notes\dwsync.xml" />
+    <Content Include="Content\themes\layui\css\_notes\dwsync.xml" />
+    <Content Include="Content\themes\layui\font\iconfont.svg" />
+    <Content Include="Content\themes\layui\font\_notes\dwsync.xml" />
+    <Content Include="Content\themes\layui\images\face\0.gif" />
+    <Content Include="Content\themes\layui\images\face\1.gif" />
+    <Content Include="Content\themes\layui\images\face\10.gif" />
+    <Content Include="Content\themes\layui\images\face\11.gif" />
+    <Content Include="Content\themes\layui\images\face\12.gif" />
+    <Content Include="Content\themes\layui\images\face\13.gif" />
+    <Content Include="Content\themes\layui\images\face\14.gif" />
+    <Content Include="Content\themes\layui\images\face\15.gif" />
+    <Content Include="Content\themes\layui\images\face\16.gif" />
+    <Content Include="Content\themes\layui\images\face\17.gif" />
+    <Content Include="Content\themes\layui\images\face\18.gif" />
+    <Content Include="Content\themes\layui\images\face\19.gif" />
+    <Content Include="Content\themes\layui\images\face\2.gif" />
+    <Content Include="Content\themes\layui\images\face\20.gif" />
+    <Content Include="Content\themes\layui\images\face\21.gif" />
+    <Content Include="Content\themes\layui\images\face\22.gif" />
+    <Content Include="Content\themes\layui\images\face\23.gif" />
+    <Content Include="Content\themes\layui\images\face\24.gif" />
+    <Content Include="Content\themes\layui\images\face\25.gif" />
+    <Content Include="Content\themes\layui\images\face\26.gif" />
+    <Content Include="Content\themes\layui\images\face\27.gif" />
+    <Content Include="Content\themes\layui\images\face\28.gif" />
+    <Content Include="Content\themes\layui\images\face\29.gif" />
+    <Content Include="Content\themes\layui\images\face\3.gif" />
+    <Content Include="Content\themes\layui\images\face\30.gif" />
+    <Content Include="Content\themes\layui\images\face\31.gif" />
+    <Content Include="Content\themes\layui\images\face\32.gif" />
+    <Content Include="Content\themes\layui\images\face\33.gif" />
+    <Content Include="Content\themes\layui\images\face\34.gif" />
+    <Content Include="Content\themes\layui\images\face\35.gif" />
+    <Content Include="Content\themes\layui\images\face\36.gif" />
+    <Content Include="Content\themes\layui\images\face\37.gif" />
+    <Content Include="Content\themes\layui\images\face\38.gif" />
+    <Content Include="Content\themes\layui\images\face\39.gif" />
+    <Content Include="Content\themes\layui\images\face\4.gif" />
+    <Content Include="Content\themes\layui\images\face\40.gif" />
+    <Content Include="Content\themes\layui\images\face\41.gif" />
+    <Content Include="Content\themes\layui\images\face\42.gif" />
+    <Content Include="Content\themes\layui\images\face\43.gif" />
+    <Content Include="Content\themes\layui\images\face\44.gif" />
+    <Content Include="Content\themes\layui\images\face\45.gif" />
+    <Content Include="Content\themes\layui\images\face\46.gif" />
+    <Content Include="Content\themes\layui\images\face\47.gif" />
+    <Content Include="Content\themes\layui\images\face\48.gif" />
+    <Content Include="Content\themes\layui\images\face\49.gif" />
+    <Content Include="Content\themes\layui\images\face\5.gif" />
+    <Content Include="Content\themes\layui\images\face\50.gif" />
+    <Content Include="Content\themes\layui\images\face\51.gif" />
+    <Content Include="Content\themes\layui\images\face\52.gif" />
+    <Content Include="Content\themes\layui\images\face\53.gif" />
+    <Content Include="Content\themes\layui\images\face\54.gif" />
+    <Content Include="Content\themes\layui\images\face\55.gif" />
+    <Content Include="Content\themes\layui\images\face\56.gif" />
+    <Content Include="Content\themes\layui\images\face\57.gif" />
+    <Content Include="Content\themes\layui\images\face\58.gif" />
+    <Content Include="Content\themes\layui\images\face\59.gif" />
+    <Content Include="Content\themes\layui\images\face\6.gif" />
+    <Content Include="Content\themes\layui\images\face\60.gif" />
+    <Content Include="Content\themes\layui\images\face\61.gif" />
+    <Content Include="Content\themes\layui\images\face\62.gif" />
+    <Content Include="Content\themes\layui\images\face\63.gif" />
+    <Content Include="Content\themes\layui\images\face\64.gif" />
+    <Content Include="Content\themes\layui\images\face\65.gif" />
+    <Content Include="Content\themes\layui\images\face\66.gif" />
+    <Content Include="Content\themes\layui\images\face\67.gif" />
+    <Content Include="Content\themes\layui\images\face\68.gif" />
+    <Content Include="Content\themes\layui\images\face\69.gif" />
+    <Content Include="Content\themes\layui\images\face\7.gif" />
+    <Content Include="Content\themes\layui\images\face\70.gif" />
+    <Content Include="Content\themes\layui\images\face\71.gif" />
+    <Content Include="Content\themes\layui\images\face\8.gif" />
+    <Content Include="Content\themes\layui\images\face\9.gif" />
+    <Content Include="Content\themes\layui\images\face\_notes\dwsync.xml" />
+    <Content Include="Content\themes\layui\layui.js" />
+    <Content Include="Content\themes\layui\lay\dest\layui.all.js" />
+    <Content Include="Content\themes\layui\lay\dest\_notes\dwsync.xml" />
+    <Content Include="Content\themes\layui\lay\lib\jquery.js" />
+    <Content Include="Content\themes\layui\lay\lib\_notes\dwsync.xml" />
+    <Content Include="Content\themes\layui\lay\modules\code.js" />
+    <Content Include="Content\themes\layui\lay\modules\element.js" />
+    <Content Include="Content\themes\layui\lay\modules\flow.js" />
+    <Content Include="Content\themes\layui\lay\modules\form.js" />
+    <Content Include="Content\themes\layui\lay\modules\form2.js" />
+    <Content Include="Content\themes\layui\lay\modules\jquery.js" />
+    <Content Include="Content\themes\layui\lay\modules\laydate.js" />
+    <Content Include="Content\themes\layui\lay\modules\layedit.js" />
+    <Content Include="Content\themes\layui\lay\modules\layer.js" />
+    <Content Include="Content\themes\layui\lay\modules\laypage.js" />
+    <Content Include="Content\themes\layui\lay\modules\laytpl.js" />
+    <Content Include="Content\themes\layui\lay\modules\mobile.js" />
+    <Content Include="Content\themes\layui\lay\modules\tree.js" />
+    <Content Include="Content\themes\layui\lay\modules\upload.js" />
+    <Content Include="Content\themes\layui\lay\modules\util.js" />
+    <Content Include="Content\themes\layui\lay\modules\_notes\dwsync.xml" />
+    <Content Include="Content\themes\layui\_notes\dwsync.xml" />
+    <Content Include="Content\utf8-net\dialogs\anchor\anchor.html" />
+    <Content Include="Content\utf8-net\dialogs\attachment\attachment.css" />
+    <Content Include="Content\utf8-net\dialogs\attachment\attachment.html" />
+    <Content Include="Content\utf8-net\dialogs\attachment\attachment.js" />
+    <Content Include="Content\utf8-net\dialogs\attachment\fileTypeImages\icon_chm.gif" />
+    <Content Include="Content\utf8-net\dialogs\attachment\fileTypeImages\icon_default.png" />
+    <Content Include="Content\utf8-net\dialogs\attachment\fileTypeImages\icon_doc.gif" />
+    <Content Include="Content\utf8-net\dialogs\attachment\fileTypeImages\icon_exe.gif" />
+    <Content Include="Content\utf8-net\dialogs\attachment\fileTypeImages\icon_jpg.gif" />
+    <Content Include="Content\utf8-net\dialogs\attachment\fileTypeImages\icon_mp3.gif" />
+    <Content Include="Content\utf8-net\dialogs\attachment\fileTypeImages\icon_mv.gif" />
+    <Content Include="Content\utf8-net\dialogs\attachment\fileTypeImages\icon_pdf.gif" />
+    <Content Include="Content\utf8-net\dialogs\attachment\fileTypeImages\icon_ppt.gif" />
+    <Content Include="Content\utf8-net\dialogs\attachment\fileTypeImages\icon_psd.gif" />
+    <Content Include="Content\utf8-net\dialogs\attachment\fileTypeImages\icon_rar.gif" />
+    <Content Include="Content\utf8-net\dialogs\attachment\fileTypeImages\icon_txt.gif" />
+    <Content Include="Content\utf8-net\dialogs\attachment\fileTypeImages\icon_xls.gif" />
+    <Content Include="Content\utf8-net\dialogs\attachment\images\alignicon.gif" />
+    <Content Include="Content\utf8-net\dialogs\attachment\images\alignicon.png" />
+    <Content Include="Content\utf8-net\dialogs\attachment\images\bg.png" />
+    <Content Include="Content\utf8-net\dialogs\attachment\images\file-icons.gif" />
+    <Content Include="Content\utf8-net\dialogs\attachment\images\file-icons.png" />
+    <Content Include="Content\utf8-net\dialogs\attachment\images\icons.gif" />
+    <Content Include="Content\utf8-net\dialogs\attachment\images\icons.png" />
+    <Content Include="Content\utf8-net\dialogs\attachment\images\image.png" />
+    <Content Include="Content\utf8-net\dialogs\attachment\images\progress.png" />
+    <Content Include="Content\utf8-net\dialogs\attachment\images\success.gif" />
+    <Content Include="Content\utf8-net\dialogs\attachment\images\success.png" />
+    <Content Include="Content\utf8-net\dialogs\background\background.css" />
+    <Content Include="Content\utf8-net\dialogs\background\background.html" />
+    <Content Include="Content\utf8-net\dialogs\background\background.js" />
+    <Content Include="Content\utf8-net\dialogs\background\images\bg.png" />
+    <Content Include="Content\utf8-net\dialogs\background\images\success.png" />
+    <Content Include="Content\utf8-net\dialogs\charts\chart.config.js" />
+    <Content Include="Content\utf8-net\dialogs\charts\charts.css" />
+    <Content Include="Content\utf8-net\dialogs\charts\charts.html" />
+    <Content Include="Content\utf8-net\dialogs\charts\charts.js" />
+    <Content Include="Content\utf8-net\dialogs\charts\images\charts0.png" />
+    <Content Include="Content\utf8-net\dialogs\charts\images\charts1.png" />
+    <Content Include="Content\utf8-net\dialogs\charts\images\charts2.png" />
+    <Content Include="Content\utf8-net\dialogs\charts\images\charts3.png" />
+    <Content Include="Content\utf8-net\dialogs\charts\images\charts4.png" />
+    <Content Include="Content\utf8-net\dialogs\charts\images\charts5.png" />
+    <Content Include="Content\utf8-net\dialogs\emotion\emotion.css" />
+    <Content Include="Content\utf8-net\dialogs\emotion\emotion.html" />
+    <Content Include="Content\utf8-net\dialogs\emotion\emotion.js" />
+    <Content Include="Content\utf8-net\dialogs\emotion\images\0.gif" />
+    <Content Include="Content\utf8-net\dialogs\emotion\images\bface.gif" />
+    <Content Include="Content\utf8-net\dialogs\emotion\images\cface.gif" />
+    <Content Include="Content\utf8-net\dialogs\emotion\images\fface.gif" />
+    <Content Include="Content\utf8-net\dialogs\emotion\images\jxface2.gif" />
+    <Content Include="Content\utf8-net\dialogs\emotion\images\neweditor-tab-bg.png" />
+    <Content Include="Content\utf8-net\dialogs\emotion\images\tface.gif" />
+    <Content Include="Content\utf8-net\dialogs\emotion\images\wface.gif" />
+    <Content Include="Content\utf8-net\dialogs\emotion\images\yface.gif" />
+    <Content Include="Content\utf8-net\dialogs\gmap\gmap.html" />
+    <Content Include="Content\utf8-net\dialogs\help\help.css" />
+    <Content Include="Content\utf8-net\dialogs\help\help.html" />
+    <Content Include="Content\utf8-net\dialogs\help\help.js" />
+    <Content Include="Content\utf8-net\dialogs\image\image.css" />
+    <Content Include="Content\utf8-net\dialogs\image\image.html" />
+    <Content Include="Content\utf8-net\dialogs\image\image.js" />
+    <Content Include="Content\utf8-net\dialogs\image\images\alignicon.jpg" />
+    <Content Include="Content\utf8-net\dialogs\image\images\bg.png" />
+    <Content Include="Content\utf8-net\dialogs\image\images\icons.gif" />
+    <Content Include="Content\utf8-net\dialogs\image\images\icons.png" />
+    <Content Include="Content\utf8-net\dialogs\image\images\image.png" />
+    <Content Include="Content\utf8-net\dialogs\image\images\progress.png" />
+    <Content Include="Content\utf8-net\dialogs\image\images\success.gif" />
+    <Content Include="Content\utf8-net\dialogs\image\images\success.png" />
+    <Content Include="Content\utf8-net\dialogs\insertframe\insertframe.html" />
+    <Content Include="Content\utf8-net\dialogs\internal.js" />
+    <Content Include="Content\utf8-net\dialogs\link\link.html" />
+    <Content Include="Content\utf8-net\dialogs\map\map.html" />
+    <Content Include="Content\utf8-net\dialogs\map\show.html" />
+    <Content Include="Content\utf8-net\dialogs\music\music.css" />
+    <Content Include="Content\utf8-net\dialogs\music\music.html" />
+    <Content Include="Content\utf8-net\dialogs\music\music.js" />
+    <Content Include="Content\utf8-net\dialogs\preview\preview.html" />
+    <Content Include="Content\utf8-net\dialogs\scrawl\images\addimg.png" />
+    <Content Include="Content\utf8-net\dialogs\scrawl\images\brush.png" />
+    <Content Include="Content\utf8-net\dialogs\scrawl\images\delimg.png" />
+    <Content Include="Content\utf8-net\dialogs\scrawl\images\delimgH.png" />
+    <Content Include="Content\utf8-net\dialogs\scrawl\images\empty.png" />
+    <Content Include="Content\utf8-net\dialogs\scrawl\images\emptyH.png" />
+    <Content Include="Content\utf8-net\dialogs\scrawl\images\eraser.png" />
+    <Content Include="Content\utf8-net\dialogs\scrawl\images\redo.png" />
+    <Content Include="Content\utf8-net\dialogs\scrawl\images\redoH.png" />
+    <Content Include="Content\utf8-net\dialogs\scrawl\images\scale.png" />
+    <Content Include="Content\utf8-net\dialogs\scrawl\images\scaleH.png" />
+    <Content Include="Content\utf8-net\dialogs\scrawl\images\size.png" />
+    <Content Include="Content\utf8-net\dialogs\scrawl\images\undo.png" />
+    <Content Include="Content\utf8-net\dialogs\scrawl\images\undoH.png" />
+    <Content Include="Content\utf8-net\dialogs\scrawl\scrawl.css" />
+    <Content Include="Content\utf8-net\dialogs\scrawl\scrawl.html" />
+    <Content Include="Content\utf8-net\dialogs\scrawl\scrawl.js" />
+    <Content Include="Content\utf8-net\dialogs\searchreplace\searchreplace.html" />
+    <Content Include="Content\utf8-net\dialogs\searchreplace\searchreplace.js" />
+    <Content Include="Content\utf8-net\dialogs\snapscreen\snapscreen.html" />
+    <Content Include="Content\utf8-net\dialogs\spechars\spechars.html" />
+    <Content Include="Content\utf8-net\dialogs\spechars\spechars.js" />
+    <Content Include="Content\utf8-net\dialogs\table\dragicon.png" />
+    <Content Include="Content\utf8-net\dialogs\table\edittable.css" />
+    <Content Include="Content\utf8-net\dialogs\table\edittable.html" />
+    <Content Include="Content\utf8-net\dialogs\table\edittable.js" />
+    <Content Include="Content\utf8-net\dialogs\table\edittd.html" />
+    <Content Include="Content\utf8-net\dialogs\table\edittip.html" />
+    <Content Include="Content\utf8-net\dialogs\template\config.js" />
+    <Content Include="Content\utf8-net\dialogs\template\images\bg.gif" />
+    <Content Include="Content\utf8-net\dialogs\template\images\pre0.png" />
+    <Content Include="Content\utf8-net\dialogs\template\images\pre1.png" />
+    <Content Include="Content\utf8-net\dialogs\template\images\pre2.png" />
+    <Content Include="Content\utf8-net\dialogs\template\images\pre3.png" />
+    <Content Include="Content\utf8-net\dialogs\template\images\pre4.png" />
+    <Content Include="Content\utf8-net\dialogs\template\template.css" />
+    <Content Include="Content\utf8-net\dialogs\template\template.html" />
+    <Content Include="Content\utf8-net\dialogs\template\template.js" />
+    <Content Include="Content\utf8-net\dialogs\video\images\bg.png" />
+    <Content Include="Content\utf8-net\dialogs\video\images\center_focus.jpg" />
+    <Content Include="Content\utf8-net\dialogs\video\images\file-icons.gif" />
+    <Content Include="Content\utf8-net\dialogs\video\images\file-icons.png" />
+    <Content Include="Content\utf8-net\dialogs\video\images\icons.gif" />
+    <Content Include="Content\utf8-net\dialogs\video\images\icons.png" />
+    <Content Include="Content\utf8-net\dialogs\video\images\image.png" />
+    <Content Include="Content\utf8-net\dialogs\video\images\left_focus.jpg" />
+    <Content Include="Content\utf8-net\dialogs\video\images\none_focus.jpg" />
+    <Content Include="Content\utf8-net\dialogs\video\images\progress.png" />
+    <Content Include="Content\utf8-net\dialogs\video\images\right_focus.jpg" />
+    <Content Include="Content\utf8-net\dialogs\video\images\success.gif" />
+    <Content Include="Content\utf8-net\dialogs\video\images\success.png" />
+    <Content Include="Content\utf8-net\dialogs\video\video.css" />
+    <Content Include="Content\utf8-net\dialogs\video\video.html" />
+    <Content Include="Content\utf8-net\dialogs\video\video.js" />
+    <Content Include="Content\utf8-net\dialogs\webapp\webapp.html" />
+    <Content Include="Content\utf8-net\dialogs\wordimage\fClipboard_ueditor.swf" />
+    <Content Include="Content\utf8-net\dialogs\wordimage\imageUploader.swf" />
+    <Content Include="Content\utf8-net\dialogs\wordimage\tangram.js" />
+    <Content Include="Content\utf8-net\dialogs\wordimage\wordimage.html" />
+    <Content Include="Content\utf8-net\dialogs\wordimage\wordimage.js" />
+    <Content Include="Content\utf8-net\index.html" />
+    <Content Include="Content\utf8-net\lang\en\en.js" />
+    <Content Include="Content\utf8-net\lang\en\images\addimage.png" />
+    <Content Include="Content\utf8-net\lang\en\images\alldeletebtnhoverskin.png" />
+    <Content Include="Content\utf8-net\lang\en\images\alldeletebtnupskin.png" />
+    <Content Include="Content\utf8-net\lang\en\images\background.png" />
+    <Content Include="Content\utf8-net\lang\en\images\button.png" />
+    <Content Include="Content\utf8-net\lang\en\images\copy.png" />
+    <Content Include="Content\utf8-net\lang\en\images\deletedisable.png" />
+    <Content Include="Content\utf8-net\lang\en\images\deleteenable.png" />
+    <Content Include="Content\utf8-net\lang\en\images\listbackground.png" />
+    <Content Include="Content\utf8-net\lang\en\images\localimage.png" />
+    <Content Include="Content\utf8-net\lang\en\images\music.png" />
+    <Content Include="Content\utf8-net\lang\en\images\rotateleftdisable.png" />
+    <Content Include="Content\utf8-net\lang\en\images\rotateleftenable.png" />
+    <Content Include="Content\utf8-net\lang\en\images\rotaterightdisable.png" />
+    <Content Include="Content\utf8-net\lang\en\images\rotaterightenable.png" />
+    <Content Include="Content\utf8-net\lang\en\images\upload.png" />
+    <Content Include="Content\utf8-net\lang\zh-cn\images\copy.png" />
+    <Content Include="Content\utf8-net\lang\zh-cn\images\localimage.png" />
+    <Content Include="Content\utf8-net\lang\zh-cn\images\music.png" />
+    <Content Include="Content\utf8-net\lang\zh-cn\images\upload.png" />
+    <Content Include="Content\utf8-net\lang\zh-cn\zh-cn.js" />
+    <Content Include="Content\utf8-net\net\Bin\Newtonsoft.Json.dll" />
+    <Content Include="Content\utf8-net\net\Bin\Newtonsoft.Json.pdb" />
+    <Content Include="Content\utf8-net\net\Bin\Newtonsoft.Json.xml" />
+    <Content Include="Content\utf8-net\net\net.sln" />
+    <Content Include="Content\utf8-net\themes\default\css\ueditor.css" />
+    <Content Include="Content\utf8-net\themes\default\css\ueditor.min.css" />
+    <Content Include="Content\utf8-net\themes\default\dialogbase.css" />
+    <Content Include="Content\utf8-net\themes\default\images\anchor.gif" />
+    <Content Include="Content\utf8-net\themes\default\images\arrow.png" />
+    <Content Include="Content\utf8-net\themes\default\images\arrow_down.png" />
+    <Content Include="Content\utf8-net\themes\default\images\arrow_up.png" />
+    <Content Include="Content\utf8-net\themes\default\images\button-bg.gif" />
+    <Content Include="Content\utf8-net\themes\default\images\cancelbutton.gif" />
+    <Content Include="Content\utf8-net\themes\default\images\charts.png" />
+    <Content Include="Content\utf8-net\themes\default\images\cursor_h.gif" />
+    <Content Include="Content\utf8-net\themes\default\images\cursor_h.png" />
+    <Content Include="Content\utf8-net\themes\default\images\cursor_v.gif" />
+    <Content Include="Content\utf8-net\themes\default\images\cursor_v.png" />
+    <Content Include="Content\utf8-net\themes\default\images\dialog-title-bg.png" />
+    <Content Include="Content\utf8-net\themes\default\images\filescan.png" />
+    <Content Include="Content\utf8-net\themes\default\images\highlighted.gif" />
+    <Content Include="Content\utf8-net\themes\default\images\icons-all.gif" />
+    <Content Include="Content\utf8-net\themes\default\images\icons.gif" />
+    <Content Include="Content\utf8-net\themes\default\images\icons.png" />
+    <Content Include="Content\utf8-net\themes\default\images\loaderror.png" />
+    <Content Include="Content\utf8-net\themes\default\images\loading.gif" />
+    <Content Include="Content\utf8-net\themes\default\images\lock.gif" />
+    <Content Include="Content\utf8-net\themes\default\images\neweditor-tab-bg.png" />
+    <Content Include="Content\utf8-net\themes\default\images\pagebreak.gif" />
+    <Content Include="Content\utf8-net\themes\default\images\scale.png" />
+    <Content Include="Content\utf8-net\themes\default\images\sortable.png" />
+    <Content Include="Content\utf8-net\themes\default\images\spacer.gif" />
+    <Content Include="Content\utf8-net\themes\default\images\sparator_v.png" />
+    <Content Include="Content\utf8-net\themes\default\images\table-cell-align.png" />
+    <Content Include="Content\utf8-net\themes\default\images\tangram-colorpicker.png" />
+    <Content Include="Content\utf8-net\themes\default\images\toolbar_bg.png" />
+    <Content Include="Content\utf8-net\themes\default\images\unhighlighted.gif" />
+    <Content Include="Content\utf8-net\themes\default\images\upload.png" />
+    <Content Include="Content\utf8-net\themes\default\images\videologo.gif" />
+    <Content Include="Content\utf8-net\themes\default\images\word.gif" />
+    <Content Include="Content\utf8-net\themes\default\images\wordpaste.png" />
+    <Content Include="Content\utf8-net\themes\iframe.css" />
+    <Content Include="Content\utf8-net\third-party\codemirror\codemirror.css" />
+    <Content Include="Content\utf8-net\third-party\codemirror\codemirror.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\adapters\mootools-adapter.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\adapters\mootools-adapter.src.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\adapters\prototype-adapter.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\adapters\prototype-adapter.src.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\adapters\standalone-framework.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\adapters\standalone-framework.src.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\highcharts-more.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\highcharts-more.src.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\highcharts.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\highcharts.src.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\modules\annotations.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\modules\annotations.src.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\modules\canvas-tools.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\modules\canvas-tools.src.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\modules\data.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\modules\data.src.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\modules\drilldown.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\modules\drilldown.src.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\modules\exporting.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\modules\exporting.src.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\modules\funnel.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\modules\funnel.src.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\modules\heatmap.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\modules\heatmap.src.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\modules\map.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\modules\map.src.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\modules\no-data-to-display.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\modules\no-data-to-display.src.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\themes\dark-blue.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\themes\dark-green.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\themes\gray.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\themes\grid.js" />
+    <Content Include="Content\utf8-net\third-party\highcharts\themes\skies.js" />
+    <Content Include="Content\utf8-net\third-party\jquery-1.10.2.js" />
+    <Content Include="Content\utf8-net\third-party\jquery-1.10.2.min.js" />
+    <Content Include="Content\utf8-net\third-party\snapscreen\UEditorSnapscreen.exe" />
+    <Content Include="Content\utf8-net\third-party\SyntaxHighlighter\shCore.js" />
+    <Content Include="Content\utf8-net\third-party\SyntaxHighlighter\shCoreDefault.css" />
+    <Content Include="Content\utf8-net\third-party\video-js\font\vjs.svg" />
+    <Content Include="Content\utf8-net\third-party\video-js\video-js.css" />
+    <Content Include="Content\utf8-net\third-party\video-js\video-js.min.css" />
+    <Content Include="Content\utf8-net\third-party\video-js\video-js.swf" />
+    <Content Include="Content\utf8-net\third-party\video-js\video.dev.js" />
+    <Content Include="Content\utf8-net\third-party\video-js\video.js" />
+    <Content Include="Content\utf8-net\third-party\webuploader\Uploader.swf" />
+    <Content Include="Content\utf8-net\third-party\webuploader\webuploader.css" />
+    <Content Include="Content\utf8-net\third-party\webuploader\webuploader.custom.js" />
+    <Content Include="Content\utf8-net\third-party\webuploader\webuploader.custom.min.js" />
+    <Content Include="Content\utf8-net\third-party\webuploader\webuploader.flashonly.js" />
+    <Content Include="Content\utf8-net\third-party\webuploader\webuploader.flashonly.min.js" />
+    <Content Include="Content\utf8-net\third-party\webuploader\webuploader.html5only.js" />
+    <Content Include="Content\utf8-net\third-party\webuploader\webuploader.html5only.min.js" />
+    <Content Include="Content\utf8-net\third-party\webuploader\webuploader.js" />
+    <Content Include="Content\utf8-net\third-party\webuploader\webuploader.min.js" />
+    <Content Include="Content\utf8-net\third-party\webuploader\webuploader.withoutimage.js" />
+    <Content Include="Content\utf8-net\third-party\webuploader\webuploader.withoutimage.min.js" />
+    <Content Include="Content\utf8-net\third-party\xss.min.js" />
+    <Content Include="Content\utf8-net\third-party\zeroclipboard\ZeroClipboard.js" />
+    <Content Include="Content\utf8-net\third-party\zeroclipboard\ZeroClipboard.min.js" />
+    <Content Include="Content\utf8-net\third-party\zeroclipboard\ZeroClipboard.swf" />
+    <Content Include="Content\utf8-net\ueditor.all.js" />
+    <Content Include="Content\utf8-net\ueditor.all.min.js" />
+    <Content Include="Content\utf8-net\ueditor.config.js" />
+    <Content Include="Content\utf8-net\ueditor.parse.js" />
+    <Content Include="Content\utf8-net\ueditor.parse.min.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\themes\desktop\style\fonts\iconfont.eot" />
+    <Content Include="Content\themes\desktop\style\fonts\iconfont.ttf" />
+    <Content Include="Content\themes\desktop\style\fonts\iconfont.woff" />
+    <Content Include="Content\themes\layui\font\iconfont.eot" />
+    <Content Include="Content\themes\layui\font\iconfont.ttf" />
+    <Content Include="Content\themes\layui\font\iconfont.woff" />
+    <Content Include="Content\utf8-net\net\config.json" />
+    <Content Include="Content\utf8-net\net\controller.ashx" />
+    <Content Include="Content\utf8-net\net\README.md" />
+    <Content Include="Content\utf8-net\net\Web.config" />
+    <Content Include="Content\utf8-net\third-party\jquery-1.10.2.min.map" />
+    <Content Include="Content\utf8-net\third-party\video-js\font\vjs.eot" />
+    <Content Include="Content\utf8-net\third-party\video-js\font\vjs.ttf" />
+    <Content Include="Content\utf8-net\third-party\video-js\font\vjs.woff" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Views\AdminUser\userCenter.cshtml" />
+    <Content Include="Views\expend\expand.cshtml" />
+    <None Include="Views\invitation\invitation.cshtml" />
+    <Content Include="Views\Home\login.cshtml" />
+    <None Include="Views\Home\index.cshtml" />
+    <None Include="Views\Home\themes.cshtml" />
+    <Content Include="Views\system\systemControl.cshtml" />
+    <None Include="Views\userAndAdmin\userPages.cshtml" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\themes\layer\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>8800</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:8800/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
